@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background-color: #ff6f52;
+  color: #f6eee0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Signature element: the "tide line" — a recurring animated wave rule that
+   marks the seam between sections, standing in for a generic divider. */
+.tide-line {
+  position: relative;
+  height: 28px;
+  width: 100%;
+  overflow: hidden;
+}
+.tide-line svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  animation: tide 18s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tide-line svg {
+    animation: none;
+  }
+}
+
+/* Surf-report style eyebrow readout, used instead of numbered markers */
+.surf-report {
+  font-family: var(--font-space-mono), 'Space Mono', monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.glass {
+  background: rgba(246, 238, 224, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(246, 238, 224, 0.25);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.focus-ring:focus-visible {
+  outline: 3px solid #ff6f52;
+  outline-offset: 3px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
